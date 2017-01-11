@@ -11,12 +11,16 @@ const dialog = electron.dialog;
 function doPickAndOpen() {
   const options = {
     filters: [
-      { name: 'Archives', extensions: ['cbz', 'zip'] },
+      {
+        name: 'Archives',
+        extensions: ['cbz', 'zip'],
+      },
     ],
     properties: ['openFile'],
   };
 
   dialog.showOpenDialog(windows.main.win, options, (filePaths) => {
+    if (!Array.isArray(filePaths)) return
     windows.main.send('on-open-file', filePaths);
   });
 }
