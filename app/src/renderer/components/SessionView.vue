@@ -1,34 +1,24 @@
 <style scoped>
-  .wrap {
+  .page {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
   .head {
     border-bottom: 1px solid #c2c0c2;
-    padding: 0.25rem 0.5rem;
-    background-color: #e8e6e8;
-  }
-  .body {
-    flex: 1;
-    display: flex;
   }
   .foot {
     border-top: 1px solid #c2c0c2;
-    padding: 0.25rem 0.5rem;
-    background-color: #e8e6e8;
   }
 </style>
 
 <template>
-  <div class="wrap">
-    <div class="head">
+  <div class="page d-flex flex-column">
+    <div class="head px-2 py-1 bg-faded">
       <toolbar-view></toolbar-view>
     </div>
-    <div class="body">
+    <div class="body d-flex col px-0">
       <image-view></image-view>
     </div>
-    <div class="foot" v-if="entries.length">
+    <div class="foot px-2 py-1 bg-faded">
       <progress-view></progress-view>
     </div>
   </div>
@@ -45,11 +35,6 @@
       ToolbarView,
       ImageView,
       ProgressView,
-    },
-    computed: {
-      entries() {
-        return this.$store.getters.archive.entries;
-      },
     },
     methods: {
       prev() {

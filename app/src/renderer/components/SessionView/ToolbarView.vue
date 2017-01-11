@@ -1,10 +1,4 @@
 <style scoped>
-  button {
-    border-color: #c2c0c2 #c2c0c2 #a19fa1;
-  }
-  label {
-    margin-bottom: 0;
-  }
 </style>
 
 <template>
@@ -18,11 +12,11 @@
       </button>
     </div>
     <div class="btn-group btn-group-sm mr-2" data-toggle="buttons">
-      <label class="btn btn-secondary">
+      <label class="btn btn-secondary mb-0">
         <input type="radio" name="options" id="option1" autocomplete="off">
         <i class="fa fa-fw fa-toggle-left"></i>
       </label>
-      <label class="btn btn-secondary active">
+      <label class="btn btn-secondary mb-0 active">
         <input type="radio" name="options" id="option2" autocomplete="off" checked>
         <i class="fa fa-fw fa-toggle-right"></i>
       </label>

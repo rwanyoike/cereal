@@ -1,22 +1,19 @@
 <style scoped>
-  .progress {
-    flex: 1;
-  }
-
   .progress-bar {
-    height: 5px;
+    height: 10px;
+  }
+  .col-auto {
+    min-width: 8.3%;
   }
 </style>
 
 <template>
-  <div>
-    <div class="progress align-self-center">
-      <div class="progress-bar" :style="{ width: (index / max) * 100 + '%'}"></div>
+  <div class="d-flex justify-content-between align-items-center">
+    <small class="col-auto px-0 mr-2">{{ index }}</small>
+    <div class="progress col px-0 mr-2">
+      <div class="progress-bar" :style="{ width: width + '%'}"></div>
     </div>
-    <div class="d-flex justify-content-end">
-      <small class="mr-auto">{{ index }}</small>
-      <small>{{ max }}</small>
-    </div>
+    <small class="col-auto px-0 text-right">{{ total }}</small>
   </div>
 </template>
 
@@ -26,9 +23,12 @@
       index() {
         return this.$store.getters.current.index;
       },
-      max() {
-        const archive = this.$store.getters.archive;
-        return archive.entries.length - 1;
+      total() {
+        const total = this.$store.getters.archive.entries.length - 1;
+        return total > 0 ? total : 0;
+      },
+      width() {
+        return (this.index / this.total) * 100;
       },
     },
   };
